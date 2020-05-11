@@ -1,7 +1,7 @@
-# Capabilities Blog Code
+# Use ambient to run scripts with sys rawio cap
 
-These files support a blog on using Linux Capabilities that is available at https://blog.container-solutions.com/linux-capabilities-in-practice
+Set after build
 
-Adrian Mouat.
+sudo setcap cap_sys_rawio+p set_ambient
 
-
+./set_ambient script
