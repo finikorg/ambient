@@ -1,11 +1,12 @@
 /*
- * Simple program to start the given process with CAP_NET_BIND_SERVICE in the
- * ambient capabilities. 
+ * Simple program to start the given process with CAP_SYS_RAWIO in the
+ * ambient capabilities.
  *
- * Based on test program by Christoph Lameter.
+ * Based on test program by Christoph Lameter, Adrian Mouat
  *
  * (C) 2015 Christoph Lameter <cl@linux.com>
  * (C) 2019 Adrian Mouat <adrian.mouat@container-solutions.com>
+ * (C) 2020 Andrei Emeltchenko <andrei.emeltchenko@intel.com>
  *
  * Released under: GPL v3 or later.
  *
@@ -16,14 +17,14 @@
  *
  * (requires cap-ng headers, which is in libcap-ng-dev in debian)
  *
- * This program must have the CAP_NET_BIND_SERVICE capability in the permitted 
+ * This program must have the CAP_SYS_RAWIO capability in the permitted 
  * set to run properly.
  *
  * This can be set on the file with:
  *
- *	sudo setcap cap_net_bind_service+p set_ambient
+ *	sudo setcap cap_sys_rawio+p set_ambient
  *
- * To get a shell with CAP_NET_BIND_SERVICE that can be inherited by other 
+ * To get a shell with CAP_SYS_RAWIO that can be inherited by other 
  * processes:
  *
  *	./set_ambient /bin/bash
@@ -80,9 +81,9 @@ int main(int argc, char **argv)
 {
 	int rc;
 
-	set_ambient_cap(CAP_NET_BIND_SERVICE);
+	set_ambient_cap(CAP_SYS_RAWIO);
 
-	printf("Starting process with CAP_NET_BIND_SERVICE in ambient\n");
+	printf("Starting process with CAP_SYS_RAWIO in ambient\n");
 	if (execv(argv[1], argv + 1))
 		perror("Cannot exec");
 
