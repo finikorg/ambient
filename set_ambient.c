@@ -83,7 +83,6 @@ int main(int argc, char **argv)
 
 	set_ambient_cap(CAP_SYS_RAWIO);
 
-	printf("Starting process with CAP_SYS_RAWIO in ambient\n");
 	if (execv(argv[1], argv + 1))
 		perror("Cannot exec");
 
